@@ -4,7 +4,7 @@
   vars:
     ansible_user: ec2-user
   tasks:
-    - name: This command will change the working directory to somedir/
+    - name: Up docker
       ansible.builtin.shell:
-        cmd: ls -l | grep log
-        chdir: somedir/
+        cmd: docker-compose pull
+        cmd: docker-compose up -d
