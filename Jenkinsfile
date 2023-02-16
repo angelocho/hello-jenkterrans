@@ -39,8 +39,9 @@ pipeline {
         stage('Buildingterraform') {
             steps {
                 withAWS(credentials:'clave-aws') {
+                    dir('./terraform') {
 			sh 'terraform apply -auto-approve'
-                       
+                    }   
                 }
             }
         }
