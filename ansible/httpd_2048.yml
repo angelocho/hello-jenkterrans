@@ -17,7 +17,7 @@
   tasks:
     - name: Copy file script
       ansible.builtin.copy:
-        src: ./cloudinit.sh
+        src: ../cloudinit.sh
         dest: /usr/bin/cloudinit.sh
         mode: '0744'
         directory_mode: '0755'
