@@ -9,7 +9,9 @@ pipeline {
             steps {
                    sh 'docker-compose config'
                 withAWS(credentials:'clave-aws',region: 'eu-west-1') {
-		   sh 'terraform init && terraform validate'
+                     dir('./terraform') {		   
+		          sh 'terraform init && terraform validate'
+                     }
                 }
             }
         }
