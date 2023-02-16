@@ -15,24 +15,20 @@
   vars:
     ansible_user: ec2-user
   tasks:
-    - name: Install httpd
-      yum:
-        name: httpd
-        state: present
-        update_cache: yes
-    - name: Start httpd
-      ansible.builtin.service:
-        name: httpd
-        state: started
-    - name: Enable httpd
-      ansible.builtin.service:
-        name: httpd
-        enabled: yes
-    - name: Copy file with owner and permissions
+    - name: Copy file script
       ansible.builtin.copy:
-        src: /home/sinensia/hello-2048/public_html/
-        dest: /var/www/html/
-        owner: apache
-        group: apache
-        mode: '0644'
+        src: ./cloudinit.sh
+        dest: /usr/bin/cloudinit.sh
+        mode: '0744'
         directory_mode: '0755'
+    - name: Execute file script
+      ansible.builtin.command:
+        cmd: /usr/bin/cloudinit.sh
+    - name: Start docker
+      ansible.builtin.service:
+        name: docker
+        state: started
+    - name: Enable docker
+      ansible.builtin.service:
+        name: docker
+        enabled: yes
