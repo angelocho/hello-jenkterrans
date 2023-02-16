@@ -6,4 +6,4 @@
   tasks:
     - name: Up docker
       ansible.builtin.shell:
-        cmd: /bin/bash docker-compose pull && /bin/bash docker-compose up -d
+        cmd: /usr/local/bin/docker-compose pull && /usr/local/bin/docker-compose docker-compose up -d
