@@ -29,4 +29,7 @@ resource "aws_instance" "app_server" {
     provisioner "local-exec" {
     command = "ansible-playbook -i aws_ec2.yaml httpd_2048.yml"
   }
+    provisioner "local-exec" {
+    command = "ansible-playbook -i aws_ec2.yaml dockercompup.yaml"
+  }
 }

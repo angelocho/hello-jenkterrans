@@ -1,0 +1,7 @@
+version: "3"
+services:
+  web:
+    build: .
+    image: ghcr.io/angelocho/hello-jenkterrans:latest
+    ports:
+      - "80:80"
