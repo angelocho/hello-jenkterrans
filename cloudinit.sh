@@ -6,7 +6,7 @@ sudo systemctl enable docker
 
 sudo usermod -a -G docker ec2-user
 
-sudo pip3 install docker-compose
+pip3 install docker-compose
 
 sudo wget https://raw.githubusercontent.com/angelocho/hello-jenterrans/main/compose.yaml
 
