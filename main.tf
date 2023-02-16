@@ -19,17 +19,22 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = [
     "sg-0d2b1e710a2281426",
   ]
-  count = "1"
+  count     = "1"
   subnet_id = "subnet-0f79bf7d4bc65f63b"
   key_name  = "clave-lucatic"
   tags = {
     Name = var.instance_name
     APP  = "vue2048"
   }
-    provisioner "local-exec" {
+  provisioner "local-exec" {
     command = "ansible-playbook -i aws_ec2.yaml httpd_2048.yml"
   }
-    provisioner "local-exec" {
-    command = "ansible-playbook -i aws_ec2.yaml dockercompup.yaml"
+  provisioner "remote-exec" {
+    connection {
+      type = "ssh"
+      user = "ec2-user"
+      host = self.public_ip
+    }
+    inline = ["docker-compose pull", "docker-compose up -d"]
   }
 }
