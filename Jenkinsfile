@@ -36,17 +36,20 @@ pipeline {
         stage('Buildingterraform') {
             steps {
                 withAWS(credentials:'clave-aws') {
-                   sshagent(['ssh-amazon']) {
 			sh 'terraform apply -auto-approve'
-                        dir('./ansible') {
-                           sh 'ansible-playbook -i aws_ec2.yaml httpd_2048.yml'
-                           sh 'ansible-playbook -i aws_ec2.yaml dockercompup.yaml'
-                           
-			 }  
-                    }   
+                       
                 }
             }
         }
-
+        stage('Configuringwithansible') {
+            steps {
+                withAWS(credentials:'clave-aws') {
+                   dir('./ansible') {
+                           ansiblePlaybook colorized: true, credentialsId: 'ssh-amazon', inventory: 'aws_ec2.yaml', playbook: 'httpd_2048.yml'
+                           ansiblePlaybook colorized: true, credentialsId: 'ssh-amazon', inventory: 'aws_ec2.yaml', playbook: 'dockercompup.yaml'
+                   } 
+                }
+            }
+        }
     }
 }
