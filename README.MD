@@ -1,1 +1,2 @@
-This is a deploy of an server in aws provider with terraform
+This is a deploy of a web server in aws provider with terraform, with ansible and docker
+
