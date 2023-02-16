@@ -19,7 +19,7 @@ resource "aws_instance" "app_server" {
   vpc_security_group_ids = [
     "sg-0d2b1e710a2281426",
   ]
-  count     = "3"
+  count     = "2"
   subnet_id = "subnet-0f79bf7d4bc65f63b"
   key_name  = "clave-lucatic"
   tags = {
