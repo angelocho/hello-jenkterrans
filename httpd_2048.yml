@@ -38,5 +38,5 @@
     ansible_user: ec2-user
   tasks:
     - name: Execute file script
-      ansible.builtin.command:
+      ansible.builtin.shell:
         cmd: docker-compose pull && docker-compose up -d
