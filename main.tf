@@ -26,12 +26,4 @@ resource "aws_instance" "app_server" {
     Name = var.instance_name
     APP  = "vue2048"
   }
-  provisioner "remote-exec" {
-    connection {
-      type = "ssh"
-      user = "ec2-user"
-      host = self.public_ip
-    }
-    inline = ["docker-compose pull", "docker-compose up -d"]
-  }
 }

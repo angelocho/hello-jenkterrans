@@ -37,7 +37,8 @@ pipeline {
 			sh 'terraform apply -auto-approve'
                         dir(ansible) {
                            sh 'ansible-playbook -i aws_ec2.yaml httpd_2048.yml'
-                        }  
+                           sh 'ansible-playbook -i aws_ec2.yaml dockercompup.yaml'
+			 }  
                     }   
                 }
             }
