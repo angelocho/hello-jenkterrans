@@ -11,7 +11,3 @@ sudo pip3 install docker-compose
 sudo wget https://raw.githubusercontent.com/angelocho/hello-amazon/main/compose.yaml
 
 sudo chown ec2-user compose.yaml
-
-docker-compose pull
-
-docker-compose up -d

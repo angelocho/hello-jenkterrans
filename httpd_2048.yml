@@ -32,3 +32,11 @@
       ansible.builtin.service:
         name: docker
         enabled: yes
+
+- hosts: all
+  vars:
+    ansible_user: ec2-user
+  tasks:
+    - name: Execute file script
+      ansible.builtin.command:
+        cmd: docker-compose pull && docker-compose up -d
