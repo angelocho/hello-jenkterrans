@@ -23,7 +23,7 @@ pipeline {
         stage('Dockerlogin'){
            steps {
              withCredentials([string(credentialsId: 'github-token', variable: 'PAT')]) {
-                 sh 'echo $PAT | docker login ghcr.io -u angelocho --password-stdin && docker-compose push && docker push ghcr.io/angelocho/hello-jenkterrans:1.0.${BUILD_NUMBE>
+                 sh 'echo $PAT | docker login ghcr.io -u angelocho --password-stdin && docker-compose push && docker push ghcr.io/angelocho/hello-jenkterrans:1.0.${BUILD_NUMBER}'
 
              }
 
