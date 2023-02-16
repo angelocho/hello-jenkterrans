@@ -34,8 +34,11 @@ pipeline {
             steps {
                 withAWS(credentials:'clave-aws') {
                    sshagent(['ssh-amazon']) {
-			sh 'terraform apply -auto-approve'  
-                    }
+			sh 'terraform apply -auto-approve'
+                        dir(ansible) {
+                           sh 'ansible-playbook -i aws_ec2.yaml httpd_2048.yml'
+                        }  
+                    }   
                 }
             }
         }
