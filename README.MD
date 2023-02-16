@@ -10,6 +10,6 @@ and finally copy the file compose.yaml inside the aws machine.
 Finally pull and up compose.yaml with the playbook dockercomup.yaml (module compose needs /usr/bin/python3 installed on the remote machine)  
 
 To deploy this server u have to deploy it in Jenkins.
-Requires ssh-agent plugin, pipeline-aws plugin and ansiColor plugin.
+Requires ssh-agent plugin, pipeline-aws plugin, ansiColor plugin and timestamps plugin.
 
 Also requires the credentials for aws and private keys for ssh (to connect to the machines)
