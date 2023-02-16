@@ -17,7 +17,7 @@ pipeline {
                 sshagent(['clave-sinensia']) {
                         sh 'git push --tags'
                 }
-                sh "docker tag ghcr.io/angelocho/hello-jenkterrans/hello-jenkterrans:latest ghcr.io/angelocho/hello-jenkterrans:1.0.${BUILD_NUMBER}"
+                sh "docker tag ghcr.io/angelocho/hello-jenkterrans:latest ghcr.io/angelocho/hello-jenkterrans:1.0.${BUILD_NUMBER}"
             }
         }
         stage('Dockerlogin'){
