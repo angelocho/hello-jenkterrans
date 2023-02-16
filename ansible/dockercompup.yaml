@@ -4,6 +4,9 @@
   vars:
     ansible_user: ec2-user
   tasks:
-    - name: Up docker
-      ansible.builtin.shell:
-        cmd: /usr/local/bin/docker-compose pull && /usr/local/bin/docker-compose up -d
+    - name: Pull and Up docker
+      community.docker.docker_compose:
+        project_src: /home/ec2-user/
+        pull: true
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
