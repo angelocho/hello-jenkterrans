@@ -5,7 +5,7 @@ pipeline {
         stage('Testing') {
             steps {
                 withAWS(credentials:'clave-aws') {
-		   sh 'terraform init & terraform validate'
+		   sh 'terraform init && terraform validate'
                 }
             }
         }
