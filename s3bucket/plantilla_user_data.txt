@@ -1,0 +1,8 @@
+#!/bin/bash
+amazon-linux-extras install java-openjdk11 -y
+
+wget https://hello-spring-angelocho.s3.eu-west-1.amazonaws.com/testing-web-complete-0.0.1-SNAPSHOT.jar
+
+chown ec2-user testing-web-complete-0.0.1-SNAPSHOT.jar
+
+java -jar testing-web-complete-0.0.1-SNAPSHOT.jar &
